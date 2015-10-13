@@ -1,0 +1,113 @@
+<script>
+	
+	function getdriver() {
+	$.ajax({
+		type: 'POST',
+		datatype: 'json',
+		url: 'http://www.city-ex.cl/teleton/index.php/site/getdriver',
+		success: function (data, status, xhr)
+			{
+			var obj = JSON.parse(data);
+			//console.log(obj);
+			var str ="<select id='usern' class='ui-input-text ui-body-c ui-corner-all ui-shadow-inset' style='height: 36px; width: 95%;'>";
+			for(var i=0; i<obj.length; i++){
+				if(i == 0)
+				str += "<option selected value='"+obj[i]['id_proveedor']+"'>"+obj[i]['nombre']+"</option>";
+				else
+				str += "<option value='"+obj[i]['id_proveedor']+"'>"+obj[i]['nombre']+"</option>";
+				}
+			str += "</select>";
+			$("#users").html(str);
+			}
+		})
+	}
+	
+	function guardar()
+	{
+	var usern = document.getElementById('usern').value;
+		var es = document.getElementById('es').value;
+		var direccion = document.getElementById('direccion').value;
+		//alert(usern+';'+es);
+		if(es == 0)
+			alert('Especifique entrada o salida');
+		else
+		$.ajax({
+		type: 'POST',
+		datatype: 'json',
+		url: 'http://www.city-ex.cl/teleton/index.php/site/guardarporteria',
+		data: 'usern='+usern+'&es='+es+'&direccion='+direccion,
+		success: function (data, status, xhr)
+			{
+			//var obj = JSON.parse(data);
+			//document.getElementById('obj').value = data;
+			alert('Datos guardados');
+			}
+		})
+	}
+
+
+
+</script>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-type" name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, charset=UTF-8">
+	
+	<title>Sistema de control de transporte City-express</title>
+
+	 	<link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet" href="index.css"> 
+
+    <script src="jquery.mobile/jquery-1.7.2.min"></script>
+	<script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="index.js"></script>
+
+	</head>
+  
+  <body onload="getdriver();">
+	<div data-role="page" id="page-home" class="type-interior" data-theme="b">
+
+	<div data-role="header" data-theme="a">
+		<h1>Control de porteria teleton</h1>
+ 		
+	</div>
+
+	<div data-role="content" data-theme="c">			
+		
+		<div>
+		    <div class="api-div" id="api-intro">
+		        
+
+				<div>
+				<br>
+				
+				
+				Nombre: 
+				<div id="users"></div>
+			Entrada o salida:
+			<select id='es' class='ui-input-text ui-body-c ui-corner-all ui-shadow-inset' style='height: 36px; width: 95%;'>";
+				<option selected value='0'>Seleccione ...</option>
+				<option value='1'>Entrada</option>
+				<option value='2'>Salida</option>
+			</select>
+			Destino:
+			<input type="text" id ="direccion">
+				
+				<fieldset class="ui-grid-a">
+					<div class="ui-block-b"><button onclick="javascript:guardar();" data-theme="a" data-icon="check">Guardar</button></div>	   
+				</fieldset>
+				
+				</div>		    					
+			</div>
+
+		   
+		</div>
+	</div>
+	<div data-role="footer" data-position="fixed" class="footer-docs" data-theme="a">
+		<p>&copy; City Express </p>
+	</div>	
+	</div>	
+	<script type="text/javascript" charset="utf-8" src="apis/notification.js"></script>
+  </body>
+</html>
