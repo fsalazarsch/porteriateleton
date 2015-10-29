@@ -18,6 +18,7 @@
 				}
 			str += "</select>";
 			$("#users").html(str);
+			$("#users2").html(str.replace("usern", "usern2"));
 			}
 		})
 	}
@@ -45,7 +46,43 @@
 		})
 	}
 
+	function guardar2()
+	{
+	var usern = document.getElementById('usern2').value;
+	var id = document.getElementById('idserv').value;
+		//alert(usern+';'+es);
+		$.ajax({
+		type: 'POST',
+		datatype: 'json',
+		url: 'http://www.city-ex.cl/teleton/index.php/site/asignarservicio',
+		data: 'usern='+usern+'&id='+id,
+		success: function (data, status, xhr)
+			{
+			//var obj = JSON.parse(data);
+			//document.getElementById('obj').value = data;
+			alert('Datos guardados');
+			}
+		})
+	}
 
+	function buscarserv()
+	{
+	var id = document.getElementById('idservi').value;
+		//alert(usern+';'+es);
+		$.ajax({
+		type: 'POST',
+		datatype: 'json',
+		url: 'http://www.city-ex.cl/teleton/index.php/site/verservicio',
+		data: 'id='+id,
+		success: function (data, status, xhr)
+			{
+			//var obj = JSON.parse(data);
+			$("#dest_serv").html(data);
+			//document.getElementById('obj').value = data;
+			//alert('Datos guardados');
+			}
+		})
+	}
 
 </script>
 <!DOCTYPE HTML>
@@ -73,11 +110,26 @@
  		
 	</div>
 
+	<!-- menu -->
 	<div data-role="content" data-theme="c">			
+		<div class="content-secondary">
+			<div data-role="collapsible" data-collapsed="true" data-theme="c" data-content-theme="c">
+				<h3>Menu</h3>
+
+				<ul data-role="listview" data-theme="c" data-dividertheme="c">
+					<li id="listdivider" data-role="list-divider">Menu</li>
+
+					<li><a id="click-intro">Control Porteria</a></li>
+					<li><a id="click-intro2">Asignar</a></li>
+					<li><a id="click-intro3">Buscar Servicio</a></li>
+
+				</ul>
+			</div>
+		</div>
+	<!-- menu -->
 		
-		<div>
-		    <div class="api-div" id="api-intro">
-		        
+		<div class="content-primary">
+		    <div class="api-div" id="api-intro">		        
 
 				<div>
 				<br>
@@ -101,9 +153,42 @@
 				</div>		    					
 			</div>
 
-		   
+		
+		<div class="api-div" id="api-intro2">		        
+			<div>
+			Asignar numero de servicio a conductor
+			<br>
+			Conductor: 
+			<div id="users2"></div>
+			Id:
+			<input type="number" id ="idserv">
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-b"><button onclick="javascript:guardar2();" data-theme="a" data-icon="check">Guardar</button></div>	   
+			</fieldset>
+				
+			</div>		    					
 		</div>
+
+
+		<div class="api-div" id="api-intro3">		        
+			<div>
+			Buscar por no servicio
+			<br>
+			Nro Servicio:
+			<input type="number" id ="idservi">
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-b"><button onclick="javascript:buscarserv();" data-theme="a" data-icon="check">Buscar</button></div>	   
+			</fieldset>
+				<div id="dest_serv"></div>
+			</div>		    					
+		</div>
+		
+		
+		
 	</div>
+	
+	
+	
 	<div data-role="footer" data-position="fixed" class="footer-docs" data-theme="a">
 		<p>&copy; City Express </p>
 	</div>	
