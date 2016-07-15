@@ -1,0 +1,55 @@
+<form ng-submit="verificar()">
+	<div class="card top-space">
+		<div class="p+">
+					<lx-text-field label="Numero Servicio">
+						<input type ="number"  ng-model="num_serv">
+						</lx-text-field>
+			
+			<div class="card__actions">
+				<button type="submit" class="btn btn--blue btn--l btn--raised">
+					Buscar
+					</button>
+				</div>
+		
+		</div>
+	</div>
+	
+	<div class="card top-space">
+		<div class="p+">
+			
+			<div flex-container ="row">
+				<div flex-item>
+					<lx-text-field label="Centro de Costo" fixed-label="true" icon="television" >
+						<input type ="text" ng-disabled="true" ng-model="serv.cc">
+						</lx-text-field>
+					<lx-text-field label="Tipo de Servicio" fixed-label="true" icon="traffic-light">
+						<input type ="disabled" ng-disabled="true" ng-model="serv.ts">
+						</lx-text-field>
+					<lx-text-field label="Tipo de Vehiculo" fixed-label="true" icon="truck">
+						<input type ="disabled" ng-disabled="true" ng-model="serv.tv">
+						</lx-text-field>
+					<lx-text-field label="Solicitante" fixed-label="true" icon="account">
+						<input type ="disabled" ng-disabled="true" ng-model="serv.username">
+						</lx-text-field>
+					<lx-text-field label="Hora inicio Serv" fixed-label="true" icon="clock">
+						<input type ="disabled" ng-disabled="true" ng-model="serv.hora_ini">
+						</lx-text-field>
+					<lx-text-field label="Hora término Serv" fixed-label="true" icon="fast-forward">
+						<input type ="disabled" ng-disabled="true" ng-model="serv.hora_ter">
+						</lx-text-field>
+					<lx-text-field label="Pasajero Principal" fixed-label="true" icon="account-multiple-plus">
+						<input type ="disabled" ng-disabled="true" ng-model="serv.pasajero_principal">
+						</lx-text-field>
+					<lx-text-field label="Conductor" fixed-label="true" icon="car">
+						<input type ="disabled" ng-disabled="true" ng-disabled="true" ng-model="serv.nombre">
+						</lx-text-field>
+
+					</div>
+				</div>
+					
+		</div>
+	</div>
+</form>
+<button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 3%; bottom: 3%; float: right;">
+<a href="tel:+569{{serv.telefono}}"><i class="icon icon--xl icon--green icon--circled mdi mdi-phone" ></i></a>
+</button>
