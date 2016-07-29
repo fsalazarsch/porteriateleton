@@ -43,18 +43,38 @@
 					<lx-text-field label="Conductor" fixed-label="true" icon="car">
 						<input type ="disabled" ng-disabled="true" ng-disabled="true" ng-model="serv.nombre">
 						</lx-text-field>
-					<lx-text-field label="Lugar Presentacion" fixed-label="true" icon="car">
+					<table>
+					<tr>
+					<td width="90%">
+					<lx-text-field label="Lugar Presentacion" fixed-label="true" icon="undo">
 						<input type ="disabled" ng-disabled="true"  ng-model="serv.lugar_presentacion">
+					
 						</lx-text-field>
-					<lx-text-field label="Lugar Salida" fixed-label="true" icon="car">
+					</td>
+					<td width="5%">
+						<button class="icon--xl icon--blue mdi mdi-map btn btn--blue btn--l btn--raised"></button>
+					</td>
+					</tr>
+					</table>
+					<table>
+					<tr>
+					<td width="90%">
+					<lx-text-field label="Lugar Salida" fixed-label="true" icon="share">
 						<input type ="disabled" ng-disabled="true"  ng-model="serv.lugar_destino">
 						</lx-text-field>
+					</td>
+					<td width="5%">
+					<lx-text-field label="" fixed-label="true" icon="map">
+					</lx-text-field>
+					</td>
+					</tr>
+					</table>
 					</div>
 				</div>
 					
 		</div>
 	</div>
 </form>
-<button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 3%; bottom: 3%; float: right;">
+<button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 50%; bottom: 3%; float: right;">
 <a href="tel:+569{{serv.celular}}"><i class="icon icon--xl icon--green icon--circled mdi mdi-phone" ></i></a>
 </button>
