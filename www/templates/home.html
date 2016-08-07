@@ -1,3 +1,95 @@
+<lx-tabs>
+
+<lx-tab heading="CONTROL PORTERIA">
+
+	<form ng-submit="verificar()">
+	<div class="card top-space">
+		<div class="p+ pt0">
+				
+			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.nombre }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.nombre }}
+            </lx-select-choices>
+			</lx-select>
+			
+
+			<lx-select  placeholder="Entrada o SAlida" choices="acciones" ng-model="driver.contacto" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.acc }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.acc }}
+            </lx-select-choices>
+			</lx-select>
+
+			
+			<div flex-container ="row">
+				<div flex-item>
+					<lx-text-field label="Numero de Servicio">
+						<input type ="number" min =1 ng-model="driver.passwd">
+						</lx-text-field>
+					</div>
+				</div>
+			
+			<div class="card__actions">
+				<button type="submit" class="btn btn--blue btn--l btn--raised">
+					Asignar
+					</button>
+				</div>
+			
+		</div>
+	</div>
+</form>
+{{driver.driver.id_proveedor}} {{driver.contacto.val}} {{driver.passwd}}
+</lx-tab>
+
+
+<lx-tab heading="ASIGNAR SERVICIO">
+	<form ng-submit="verificar()">
+	<div class="card top-space">
+		<div class="p+ pt0">
+			<div flex-container ="row">
+				
+			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.Nombre }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.Nombre }}
+            </lx-select-choices>
+        </lx-select>
+				</div>
+			
+			<div flex-container ="row">
+				<div flex-item>
+					<lx-text-field label="Numero de Servicio">
+						<input type ="number" min =1 ng-model="driver.passwd">
+						</lx-text-field>
+					</div>
+				</div>
+			
+			<div class="card__actions">
+				<button type="submit" class="btn btn--blue btn--l btn--raised">
+					Asignar
+					</button>
+				</div>
+			
+		</div>
+	</div>
+</form>
+
+</lx-tab>
+
+
+	<lx-tab heading="BUSCAR SERVICIO">
+
+
 <form ng-submit="verificar()">
 	<div class="card top-space">
 		<div class="p+">
@@ -78,3 +170,5 @@
 <button class="btn btn--xl btn--blue btn--fab ng-scope" style="position: fixed; right: 50%; bottom: 3%; float: right;">
 <a href="tel:+569{{serv.celular}}"><i class="icon icon--xl icon--green icon--circled mdi mdi-phone" ></i></a>
 </button>
+
+</lx-tab>
