@@ -7,3 +7,7 @@ angular.module("App")
 	return $resource("http://www.city-ex.cl/rapi2/api/driverteleton");
 		
 	})
+.factory("UserResource", function($resource){
+	return $resource("http://www.city-ex.cl/rapi2/api/userteleton");
+		
+	})

@@ -23,9 +23,16 @@ angular.module("App",["lumx","ngRoute","ngResource"])
    
 		$routeProvider
 			.when('/', {
+				controller: 'LoginController',
+				templateUrl: 'templates/login.html'
+				})
+			.when('/login/1', {
 				controller: 'MainController',
 				templateUrl: 'templates/home.html'
 				})
-
+			.when('/login/2', {
+				controller: 'MainController',
+				templateUrl: 'templates/homeguest.html'
+				})
 
 }]);
