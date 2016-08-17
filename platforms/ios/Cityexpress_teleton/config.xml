@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.cityexcl.vina" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="cl.cityexcl.teleton" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />
@@ -34,7 +34,7 @@
     <description>
         Control de porteria de viña para cityexcl 
     </description>
-    <author email="fsalazar.sch@gmilcom" href="http://www.nullpointerex.com">
+    <author email="fsalazar.sch@gmailcom" href="http://www.nullpointerex.com">
         Felipe Salazar Schlotterbeck
     </author>
     <content src="index.html" />
