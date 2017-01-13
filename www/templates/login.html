@@ -4,7 +4,7 @@
 			<h1>{{title}}</h1>
 			<div flex-container ="row">
 				
-			<lx-select  placeholder="Seleccione nombre" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
+			<!--lx-select  placeholder="Seleccione nombre" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
             <lx-select-selected>
                 {{ $selected.username }}
             </lx-select-selected>
@@ -12,13 +12,13 @@
             <lx-select-choices>
                 {{ $choice.username }}
             </lx-select-choices>
-        </lx-select>
+        </lx-select-->
 				</div>
 			
 			<div flex-container ="row">
 				<div flex-item>
 					<lx-text-field label="Contraseña">
-						<input type ="password"  ng-model="driver.passwd">
+						<input type ="password" disabled ng-model="driver.passwd">
 						</lx-text-field>
 					</div>
 				</div>
