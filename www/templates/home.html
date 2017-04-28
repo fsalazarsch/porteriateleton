@@ -6,7 +6,7 @@
 	<div class="card top-space">
 		<div class="p+ pt0">
 				
-			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
+			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="5" ng-change= "update()" allow-clear="true">
             <lx-select-selected>
                 {{ $selected.nombre }}
             </lx-select-selected>
@@ -17,7 +17,7 @@
 			</lx-select>
 			
 
-			<lx-select  placeholder="Entrada o Salida" choices="acciones" ng-model="driver.contacto" id={{cont}} min-length="0" ng-change= "update()" allow-clear="true">
+			<lx-select  placeholder="Entrada o Salida" choices="acciones" ng-model="driver.contacto" id={{cont}} min-length="5" ng-change= "update()" allow-clear="true">
             <lx-select-selected>
                 {{ $selected.acc }}
             </lx-select-selected>
@@ -55,7 +55,7 @@
 		<div class="p+ pt0">
 			<div flex-container ="row">
 				
-			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="0" allow-clear="true">
+			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="5" allow-clear="true">
             <lx-select-selected>
                 {{ $selected.nombre }}
             </lx-select-selected>
