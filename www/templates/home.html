@@ -1,12 +1,53 @@
 <lx-tabs>
+<lx-tab heading="PEDIR SERVICIO">
+	<form ng-submit="pedir_servicio()">
+		<div class="card top-space">
+		<div class="p+">
 
-<lx-tab heading="CONTROL PORTERIA">
 
-	<form ng-submit="ctrlport()">
-	<div class="card top-space">
-		<div class="p+ pt0">
-				
-			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="5" ng-change= "update()" allow-clear="true">
+					
+						<lx-date-picker class="lx-date-picker__current-date" model="serv.fecha" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" >
+						</lx-date-picker>
+						
+
+					<lx-text-field label="" fixed-label="true" icon="clock" >
+						<table width="100%"><tr>
+						<td width="48%">
+							<lx-text-field label="Hora inicio" fixed-label="true">
+								<input type ="number" ng-model="serv.horaih" min="00" max="23">
+							</lx-text-field>
+						</td>
+						<td width="4%">
+							:
+						</td>
+						<td width="48%">
+							<lx-text-field label="Minuto inicio" fixed-label="true">
+								<input  type ="number" ng-model="serv.horaim" min="00" max = "59">
+							</lx-text-field>
+						</td>
+						</tr></table>
+
+						</lx-text-field>
+
+					<lx-text-field label="" fixed-label="true" icon="clock" >
+						<table width="100%"><tr>
+						<td width="48%">
+							<lx-text-field label="Hora termino" fixed-label="true">
+								<input type ="number" ng-model="serv.horath" min="00" max="23">
+							</lx-text-field>
+						</td>
+						<td width="4%">
+							:
+						</td>
+						<td width="48%">
+							<lx-text-field label="Minuto termino" fixed-label="true">
+								<input  type ="number" ng-model="serv.horatm" min="00" max = "59">
+							</lx-text-field>
+						</td>
+						</tr></table>
+
+						</lx-text-field>
+			<lx-select  fixed-label="true" placeholder="Seleccione centro costo" choices="cc" ng-model="cc.cc" value="0" ng-change="updatecc()" allow-clear="true">
             <lx-select-selected>
                 {{ $selected.nombre }}
             </lx-select-selected>
@@ -14,43 +55,91 @@
             <lx-select-choices>
                 {{ $choice.nombre }}
             </lx-select-choices>
-			</lx-select>
-			
+	        </lx-select>
 
-			<lx-select  placeholder="Entrada o Salida" choices="acciones" ng-model="driver.contacto" id={{cont}} min-length="5" ng-change= "update()" allow-clear="true">
+			<lx-select  fixed-label="true" icon="truck" placeholder="Seleccione tipo servicio" choices="tiposervicio" 
+			ng-model="ts.ts" min-length="0" ng-change="update2()" allow-clear="true">
             <lx-select-selected>
-                {{ $selected.acc }}
+                {{ $selected.nombre }}
             </lx-select-selected>
 
             <lx-select-choices>
-                {{ $choice.acc }}
+                {{ $choice.nombre }}
             </lx-select-choices>
-			</lx-select>
+	        </lx-select>
 
-			
-			<div flex-container ="row">
-				<div flex-item>
-					<lx-text-field label="Destino de Servicio">
-						<input type ="text" ng-model="driver.passwd">
+	        <div class="home" ng-show="aparecervuelos">
+    		<lx-text-field label="Vuelo In" fixed-label="true" icon="airplane">
+			<input type ="disabled" min="0" ng-model="serv.vuelo_in">
+			</lx-text-field>
+			<lx-text-field label="Vuelo Out" fixed-label="true" icon="airplane">
+			<input type ="disabled" ng-model="serv.vuelo_out">
+			</lx-text-field>
+			</div>
+
+			<lx-select  fixed-label="true" icon="truck" placeholder="Seleccione tipo vehiculo" choices="tipovehiculo" ng-model="tv.tv" min-length="0" ng-change="updatetv()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.nombre }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.nombre }}
+            </lx-select-choices>
+	        </lx-select>
+
+
+					<lx-text-field label="Numero Pasajeros" fixed-label="true" icon="account-switch">
+						<input type ="number" min="0" ng-model="serv.nro_pasajero">
 						</lx-text-field>
-					</div>
-				</div>
-			
+					<lx-text-field label="Pasajero Principal" fixed-label="true" icon="account-multiple-plus">
+						<input type ="disabled" ng-model="serv.pasajero_principal">
+						</lx-text-field>
+
+					<lx-text-field label="Lugar Presentacion" fixed-label="true" icon="undo">
+						<input type ="disabled" ng-model="serv.lugar_presentacion">					
+						</lx-text-field>
+
+			<lx-select  fixed-label="true" ng-hide="0" placeholder="Seleccione comuna presentacion" choices="comuna" ng-model="c1.c1"  ng-change="update5()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.comuna }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.comuna }}
+            </lx-select-choices>
+	        </lx-select>
+
+					<lx-text-field label="Lugar Salida" fixed-label="true" icon="share">
+						<input type ="disabled"  ng-model="serv.lugar_destino">
+						</lx-text-field>
+
+			<lx-select  fixed-label="true"  ng-hide="0" placeholder="Seleccione comuna destino" choices="comuna" ng-model="c2.c2"  ng-change="update6()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.comuna }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.comuna }}
+            </lx-select-choices>
+	        </lx-select>
+
+			<lx-text-field label="Referencias" fixed-label="true" icon="message">
+				<textarea ng-model="serv.referencias"></textarea> 			
+			</lx-text-field>
+				
+		</div>
 			<div class="card__actions">
 				<button type="submit" class="btn btn--blue btn--l btn--raised">
 					Guardar
 					</button>
 				</div>
-			
-		</div>
 	</div>
-</form>
 
+	</form>
 </lx-tab>
 
-
 <lx-tab heading="ASIGNAR SERVICIO">
-	<form ng-submit="asignar()">
+	<form ng-submit="">
 	<div class="card top-space">
 		<div class="p+ pt0">
 			<div flex-container ="row">
@@ -80,22 +169,11 @@
 					Asignar
 					</button>
 				</div>
-</form>
-
-	<form ng-submit="valorizar()">
-
-			
-			<input type ="hidden" min =1 ng-model="driver.passwd">
-					
-			<div class="card__actions">
-				<button type="submit" class="btn btn--blue btn--l btn--raised">
-					Valorizar
-					</button>
-				</div>
-			
-		</div>
+	</div>
 	</div>
 </form>
+
+
 
 </lx-tab>
 
@@ -168,5 +246,161 @@
 </button>
 
  
+
+</lx-tab>
+<lx-tab heading="ADMINISTRAR SERVICIOS">
+
+	<form ng-submit="buscar_servicio()">
+	<div class="card top-space">
+		<div class="p+ pt0">
+
+			<lx-date-picker class="lx-date-picker__current-date" model="serv.fecha" label="Seleccione fecha" locale="es" fixed-label="true" icon="calendar" >
+			</lx-date-picker>
+
+			<lx-text-field label="" fixed-label="true" icon="clock" >
+				<table width="100%"><tr>
+				<td width="48%">
+					<lx-text-field label="Hora inicio" fixed-label="true">
+						<input type ="number" ng-model="serv.horaih" min="00" max="23">
+					</lx-text-field>
+				</td>
+				<td width="4%">
+					:
+				</td>
+				<td width="48%">
+					<lx-text-field label="Minuto inicio" fixed-label="true">
+					<input  type ="number" ng-model="serv.horaim" min="00" max = "59">
+					</lx-text-field>
+				</td>
+				</tr></table>
+
+				</lx-text-field>
+
+				<lx-text-field label="" fixed-label="true" icon="clock" >
+					<table width="100%"><tr>
+					<td width="48%">
+						<lx-text-field label="Hora termino" fixed-label="true">
+							<input type ="number" ng-model="serv.horath" min="00" max="23">
+						</lx-text-field>
+					</td>
+					<td width="4%">
+						:
+					</td>
+					<td width="48%">
+						<lx-text-field label="Minuto termino" fixed-label="true">
+							<input  type ="number" ng-model="serv.horatm" min="00" max = "59">
+						</lx-text-field>
+					</td>
+					</tr></table>
+			</lx-text-field>
+			<lx-text-field label="Lugar Presentacion" fixed-label="true" icon="undo">
+				<input type ="disabled" ng-model="serv.lugar_presentacion">		
+			</lx-text-field>
+
+			<lx-text-field label="Lugar Salida" fixed-label="true" icon="share">
+				<input type ="disabled" ng-model="serv.lugar_destino">
+			</lx-text-field>
+
+			<lx-select  placeholder="Seleccione tipo vehiculo" choices="tipovehiculo" ng-model="tv.tv" id={{cont}} min-length="0" ng-change= "updatetv()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.nombre }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.nombre }}
+            </lx-select-choices>
+			</lx-select>
+
+			<table width="100%"><tr>
+			<td width="50%">
+			<lx-select  placeholder="Ordenar por..." choices="ord" ng-model="serv.ord" id={{cont}} min-length="0" ng-change= "" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.ord }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.ord }}
+            </lx-select-choices>
+			</lx-select>
+			</td>
+			<td width="20%">
+			<lx-text-field label="Limite" fixed-label="true">
+				<input type ="number" ng-model="serv.limite">
+			</lx-text-field>
+			</td>
+			</tr>
+			</table>
+			<div class="card__actions">
+				<button type="submit" class="btn btn--blue btn--l btn--raised">
+					Buscar
+					</button>
+				</div>
+			
+		</div>
+	</div>
+
+	<div class="card top-space">
+		<div class="p+ pt0">
+
+			<table border="1" width="100%">
+				<tr>
+				<td width="10%">ID</td>
+				<td width="10%">FECHA</td>
+				<td width="10%">HOR</td>
+				<td width="25%">L PRES</td>
+				<td width="25%">L DEST</td>
+				<td width="10%">VEH</td>
+				<td width="10%">Acciones</td></tr>
+			</table>
+		</div>
+	</div>
+</form>
+{{serv}}
+</lx-tab>
+<lx-tab heading="CONTROL PORTERIA">
+
+	<form ng-submit="ctrlport()">
+	<div class="card top-space">
+		<div class="p+ pt0">
+				
+			<lx-select  placeholder="Seleccione nombre conductor" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="5" ng-change= "update()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.nombre }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.nombre }}
+            </lx-select-choices>
+			</lx-select>
+			
+
+			<lx-select  placeholder="Entrada o Salida" choices="acciones" ng-model="driver.contacto" id={{cont}} min-length="5" ng-change= "update()" allow-clear="true">
+            <lx-select-selected>
+                {{ $selected.acc }}
+            </lx-select-selected>
+
+            <lx-select-choices>
+                {{ $choice.acc }}
+            </lx-select-choices>
+			</lx-select>
+
+			
+			<div flex-container ="row">
+				<div flex-item>
+					<lx-text-field label="Destino de Servicio">
+						<input type ="text" ng-model="driver.passwd">
+						</lx-text-field>
+					</div>
+				</div>
+			
+			<div class="card__actions">
+				<button type="submit" class="btn btn--blue btn--l btn--raised">
+					Guardar
+					</button>
+				</div>
+			
+		</div>
+	</div>
+</form>
 
 </lx-tab>
