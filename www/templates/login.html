@@ -2,30 +2,26 @@
 	<div class="card top-space">
 		<div class="p+ pt0">
 			<h1>{{title}}</h1>
-			<div flex-container ="row">
-				
-			<lx-select  placeholder="Seleccione nombre" choices="drivers" ng-model="driver.driver" id={{cont}} min-length="3" ng-change= "update()" allow-clear="true">
-            <lx-select-selected>
-                {{ $selected.username }}
-            </lx-select-selected>
 
-            <lx-select-choices>
-                {{ $choice.username }}
-            </lx-select-choices>
-        </lx-select>
+			<div flex-container ="row">
+				<div flex-item>
+					<lx-text-field label="Nombre Usuario">
+						<input type ="text" ng-model="user.user">
+						</lx-text-field>
+					</div>
 				</div>
-			
+
 			<div flex-container ="row">
 				<div flex-item>
 					<lx-text-field label="Contraseña">
-						<input type ="password" ng-model="driver.passwd">
+						<input type ="password" ng-model="user.passwd">
 						</lx-text-field>
 					</div>
 				</div>
 			
 			<div class="card__actions">
 				<button type="submit" class="btn btn--blue btn--l btn--raised">
-					Guardar
+					Ingresar
 					</button>			
 				</div>
 			
@@ -33,6 +29,8 @@
 	</div>
 </form>
 	<!--div class="card top-space">
+}
+}
 <div class="card__actions">
 	<a href="#/login/2" class="btn btn--m btn--blue btn--flat" lx-ripple>Solo ver servicios</a>
 </div>

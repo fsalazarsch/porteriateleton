@@ -1,17 +1,18 @@
 angular.module("App")
 .factory("ServicioResource", function($resource){
-	return $resource("http://www.city-ex.cl/rapi2/api/servicioteleton/:id", {id: "@id"});
+	return $resource("http://www.city-ex.cl/rapi2/api/servicioteleton/:id/:cc", {id: "@id", cc: "@cc"});
 		
 	})
+
 .factory("DriverResource", function($resource){
 	return $resource("http://www.city-ex.cl/rapi2/api/driverteleton");
 		
 	})
 .factory("UserResource", function($resource){
-	return $resource('http://www.city-ex.cl/rapi2/api/userteleton', {}, {
-        query: {method: 'GET',  url: 'http://www.city-ex.cl/rapi2/api/userteleton/' },
-        get: { method: 'GET',  url: 'http://www.city-ex.cl/rapi2/api/userteleton/:id', id: "@id"},
-	})
+	return $resource('http://www.city-ex.cl/rapi2/api/userteleton');/*, {}, {
+        query: {method: 'GET',  isArray:false, url: 'http://www.city-ex.cl/rapi2/api/userteleton' },
+        get: { method: 'GET', isArray:false,  url: 'http://www.city-ex.cl/rapi2/api/userteleton/:id', id: "@id"},
+	})*/
 	})
 
 .factory("TiposervicioResource", function($resource){
@@ -31,6 +32,5 @@ angular.module("App")
 	return $resource('http://www.city-ex.cl/rapi2/api/centrocostoteleton/:id', {id: "@id"},
 	 {
         query: {method: 'GET', isArray:true, url: 'http://www.city-ex.cl/rapi2/api/centrocostoteleton/:id', id: "@id" },
-       // get: { method: 'GET',  url: 'http://www.city-ex.cl/rapi2/api/centrocostoteleton/:id', id: "@id"},
 	})
 	})
