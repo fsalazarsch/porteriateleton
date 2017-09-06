@@ -328,7 +328,14 @@ angular.module("App")
             }
             
             $scope.update = function(){
-            $scope.cel= parseInt($scope.driver.driver.telefono);
+              //alert($scope.driver.driver.id_proveedor);
+               $.post('http://www.city-ex.cl/teleton/site/gettel', {
+                   id_user: $scope.driver.driver.id_proveedor,
+                   }).success(function (response) {
+                    // alert(response);
+                    $scope.cel = response;
+                    });
+           
             }
             
             $scope.asignar = function(){
