@@ -19,18 +19,12 @@
     },
     "installed_plugins": {
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.example.hello"
+            "PACKAGE_NAME": "cl.teleton.cityex"
         }
     },
     "dependent_plugins": {},
-    "modules": [
-        {
-            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-            "id": "cordova-plugin-whitelist.whitelist",
-            "runs": true
-        }
-    ],
+    "modules": [],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.1"
+        "cordova-plugin-whitelist": "1.3.2"
     }
 }

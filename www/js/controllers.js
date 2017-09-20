@@ -75,8 +75,8 @@ angular.module("App")
             
             
             $scope.updateord = function(){
+            $scope.serv.ord.val= parseInt($scope.ord.ord.val);
             
-            $scope.serv.ord.val= parseInt($scope.ord[0].val);
             }
             $scope.updatets = function(){
             $scope.serv.ts = $scope.ts.ts.id_tiposervicio;
@@ -308,8 +308,15 @@ angular.module("App")
             
             }
             $scope.buscar_servicio = function(){
-            
+            if($scope.ord.ord == undefined){
+              $scope.ord = {ord: {val: 1}};
+
+             // alert($scope.ord.ord.val);
+              $scope.serv.ord = {val: ''};
+            }
             $.post('http://www.city-ex.cl/teleton/site/buscarlistaservicio', {
+                //if($scope.serv.ord.val == undefined)
+                  //  $scope.serv.ord.val = '';
                    fecha: $scope.serv.fecha, horaih: $scope.serv.horaih, horaim: $scope.serv.horaim, horath: $scope.serv.horath, horatm: $scope.serv.horatm, lp: $scope.serv.lugar_presentacion, ld: $scope.serv.lugar_destino, tv: $scope.serv.tv, lim: $scope.serv.limite, ord: $scope.serv.ord.val, id_user: $routeParams.id,
                    }).success(function (data){
                               //$scope.datos = data;
@@ -361,7 +368,55 @@ angular.module("App")
             $scope.serv = ServicioResource.get({id: $scope.num_serv});
             }
             
+            $scope.limpiar= function(){
+              //alert('limpiar');
+            $scope.aparecervuelos = false;
+            //$scope.isAdmin = false;
+            $scope.serv = {ord:{val: undefined}};
+            $scope.driver = {
+            driver: undefined,
+            contacto: undefined,
+            };
+            $scope.ord = { ord: undefined }
+            $scope.serv.id = $routeParams.id;
+            
+           $scope.ord = [
+                          {
+                          ord: 'Fecha - Hora',
+                          val: 1
+                          },
+                          {
+                          ord: 'ID',
+                          val: 2
+                          },
+                          {
+                          ord: 'Tipo vehiculo',
+                          val: 3
+                          },
+                          {
+                          ord: 'Lugar presentacion',
+                          val: 4
+                          },
+                          {
+                          ord: 'Lugar destino',
+                          val: 5
+                          }
+                          ];
+            $scope.serv.limite = 25;
+
+            //$scope.drivers = DriverResource.query();
+            //$scope.tiposervicio = TiposervicioResource.query();
+            //$scope.tipovehiculo = TipovehiculoResource.query();
+            //$scope.comuna = ComunaResource.query();
+            //$scope.users = UserResource.query();
+            
+            //$scope.cc = CentrocostoResource.query({id: $routeParams.id});
+            }
+
             })
+            
+
+
 .controller("LoginController", function($scope, $resource, $routeParams, $location, UserResource, LxNotificationService){
             
             $scope.user = { user: '', passwd: ''};

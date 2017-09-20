@@ -1,19 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.cityexcl.vina" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <preference name="loglevel" value="DEBUG" />
+<widget id="cl.teleton.cityex" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <allow-intent href="market:*" />
-    <name>Cityexpress_vina</name>
+    <name>Cityexpress teleton</name>
     <description>
-        Control de porteria de viña para cityexcl 
+        Control de porteria de Teleton para CityExpress
     </description>
-    <author email="fsalazar.sch@gmilcom" href="http://www.nullpointerex.com">
+    <author email="fsalazar.sch@gmail.com" href="http://www.nullpointerex.com">
         Felipe Salazar Schlotterbeck
     </author>
     <content src="index.html" />
+    <icon src="www/res/icon/icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -21,4 +20,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
 </widget>
